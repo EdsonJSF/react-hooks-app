@@ -20,7 +20,19 @@ export const SimpleForm = () => {
     return () => {
       console.log("useEffect");
     };
-  });
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      console.log("formState");
+    };
+  }, [formState]);
+
+  useEffect(() => {
+    return () => {
+      console.log("email");
+    };
+  }, [email]);
 
   return (
     <>
