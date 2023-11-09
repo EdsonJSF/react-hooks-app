@@ -1,4 +1,4 @@
-import { SimpleForm } from "../02-useEffect/SimpleForm";
+import { FormWithCustomHook } from "../02-useEffect/FormWithCustomHook";
 
 export const HooksApp = () => {
   return (
@@ -7,7 +7,7 @@ export const HooksApp = () => {
 
       <hr />
 
-      <SimpleForm />
+      <FormWithCustomHook />
     </>
   );
 };
