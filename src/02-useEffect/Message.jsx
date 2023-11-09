@@ -2,10 +2,15 @@ import { useEffect } from "react";
 
 export const Message = () => {
   useEffect(() => {
-    console.log("Message mounter");
+    const onMouseMove = ({ x, y }) => {
+      const coords = { x, y };
+      console.log(coords);
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
 
     return () => {
-      console.log("Message unmounted");
+      window.removeEventListener("mousemove", onMouseMove);
     };
   }, []);
 
