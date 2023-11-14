@@ -1,5 +1,5 @@
-import { useCounter } from "../hooks/useCounter";
-import { useFetch } from "../hooks/useFetch";
+import { Loading, RickMortyBlockquote } from "../components";
+import { useCounter, useFetch } from "../hooks";
 
 export const MultipleCustomHooks = () => {
   const initialCounter = 1;
@@ -16,17 +16,7 @@ export const MultipleCustomHooks = () => {
       <h1>MultipleCustomHooks</h1>
       <hr />
 
-      {isLoading ? (
-        <div className="alert alert-info text-center">Loading...</div>
-      ) : (
-        <blockquote className="blockquote d-flex justify-content-end align-items-end gap-3">
-          <img src={data?.image} alt={data?.name + "image"} width="100" />
-          <div className="">
-            <p>{data?.name}</p>
-            <footer className="blockquote-footer">{data?.origin.name}</footer>
-          </div>
-        </blockquote>
-      )}
+      {isLoading ? <Loading /> : <RickMortyBlockquote data={!!data && data} />}
 
       <div className="d-flex justify-content-end">
         <button
