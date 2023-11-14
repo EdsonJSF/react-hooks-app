@@ -7,13 +7,13 @@ export const useFetch = (initialUrl) => {
     hasError: null,
   });
 
-  const getFetch = async (url) => {
+  const getFetch = async () => {
     setState({
       ...state,
       isLoading: true,
     });
 
-    const resp = await fetch(url);
+    const resp = await fetch(initialUrl);
     const data = await resp.json();
 
     setState({
@@ -25,7 +25,7 @@ export const useFetch = (initialUrl) => {
 
   useEffect(() => {
     return () => {
-      getFetch(initialUrl);
+      getFetch();
     };
   }, [initialUrl]);
 

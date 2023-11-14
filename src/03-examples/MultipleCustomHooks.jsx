@@ -1,8 +1,14 @@
+import { useCounter } from "../hooks/useCounter";
 import { useFetch } from "../hooks/useFetch";
 
 export const MultipleCustomHooks = () => {
+  const initialCounter = 1;
+
+  const { counter, incrementCounter, decrementCounter, resetCounter } =
+    useCounter(initialCounter);
+
   const { data, isLoading } = useFetch(
-    "https://rickandmortyapi.com/api/character/1"
+    `https://rickandmortyapi.com/api/character/${counter}`
   );
 
   return (
@@ -21,6 +27,32 @@ export const MultipleCustomHooks = () => {
           </div>
         </blockquote>
       )}
+
+      <div className="d-flex justify-content-end">
+        <button
+          className="btn btn-primary"
+          disabled={isLoading || counter <= initialCounter}
+          onClick={() => decrementCounter()}
+        >
+          Back
+        </button>
+
+        <button
+          className="btn btn-primary"
+          disabled={isLoading || counter === initialCounter}
+          onClick={() => resetCounter()}
+        >
+          Restart
+        </button>
+
+        <button
+          className="btn btn-primary"
+          disabled={isLoading}
+          onClick={() => incrementCounter()}
+        >
+          Next
+        </button>
+      </div>
     </>
   );
 };
