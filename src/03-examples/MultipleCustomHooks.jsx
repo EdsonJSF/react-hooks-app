@@ -1,13 +1,9 @@
 import { useFetch } from "../hooks/useFetch";
 
 export const MultipleCustomHooks = () => {
-  const { data, isLoading, hasError } = useFetch(
+  const { data, isLoading } = useFetch(
     "https://rickandmortyapi.com/api/character/1"
   );
-
-  console.log(hasError);
-
-  const { name, origin, image } = data;
 
   return (
     <>
@@ -18,10 +14,10 @@ export const MultipleCustomHooks = () => {
         <div className="alert alert-info text-center">Loading...</div>
       ) : (
         <blockquote className="blockquote d-flex justify-content-end align-items-end gap-3">
-          <img src={image} alt={name + "image"} width="100" />
+          <img src={data?.image} alt={data?.name + "image"} width="100" />
           <div className="">
-            <p>{name}</p>
-            <footer className="blockquote-footer">{origin.name}</footer>
+            <p>{data?.name}</p>
+            <footer className="blockquote-footer">{data?.origin.name}</footer>
           </div>
         </blockquote>
       )}
