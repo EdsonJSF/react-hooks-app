@@ -1,4 +1,4 @@
-import { FocusScreen } from "../04-useRef/focusScreen";
+import { Layout } from "../05-useLayoutEffect/Layout";
 
 export const HooksApp = () => {
   return (
@@ -7,7 +7,7 @@ export const HooksApp = () => {
 
       <hr />
 
-      <FocusScreen />
+      <Layout />
     </>
   );
 };
