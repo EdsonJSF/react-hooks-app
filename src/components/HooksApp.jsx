@@ -1,4 +1,4 @@
-import { MemoHook } from "../06-memo/MemoHook";
+import { CallbackHook } from "../06-memo/CallbackHook";
 
 export const HooksApp = () => {
   return (
@@ -7,7 +7,7 @@ export const HooksApp = () => {
 
       <hr />
 
-      <MemoHook />
+      <CallbackHook />
     </>
   );
 };
