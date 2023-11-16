@@ -1,4 +1,4 @@
-import { Layout } from "../05-useLayoutEffect/Layout";
+import { MemoHook } from "../06-memo/MemoHook";
 
 export const HooksApp = () => {
   return (
@@ -7,7 +7,7 @@ export const HooksApp = () => {
 
       <hr />
 
-      <Layout />
+      <MemoHook />
     </>
   );
 };
