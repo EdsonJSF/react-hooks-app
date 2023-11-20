@@ -2,7 +2,7 @@ import { useForm } from "../hooks/useForm";
 import PropTypes from "prop-types";
 
 export const TodoAdd = ({ onNewTodo }) => {
-  const { formState, handleInput } = useForm({
+  const { formState, handleInput, handleResetForm } = useForm({
     title: "",
     body: "",
   });
@@ -19,7 +19,8 @@ export const TodoAdd = ({ onNewTodo }) => {
       done: false,
     };
 
-    return onNewTodo(newTodo);
+    onNewTodo(newTodo);
+    handleResetForm();
   };
 
   return (
