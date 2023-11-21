@@ -3,5 +3,9 @@ export const todoReducer = (initialState = [], action = {}) => {
     return [...initialState, action.payload];
   }
 
+  if (action.type === "[TODO] Remove todo") {
+    return initialState.filter((todo) => todo.id !== action.payload);
+  }
+
   return [...initialState];
 };
