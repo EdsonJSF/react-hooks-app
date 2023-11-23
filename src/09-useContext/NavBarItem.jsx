@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 
 export const NavBarItem = ({ route }) => {
   return (
-    <li className="d-block">
-      <Link to={route.path}>{route.name}</Link>
+    <li className="nav-item">
+      <NavLink
+        className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+        to={route.path}
+      >
+        {route.name}
+      </NavLink>
     </li>
   );
 };
