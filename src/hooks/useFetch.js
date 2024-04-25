@@ -14,12 +14,28 @@ export const useFetch = (initialUrl) => {
     });
 
     const resp = await fetch(initialUrl);
+
+    if (!resp.ok) {
+      setState({
+        data: null,
+        isLoading: false,
+        hasError: true,
+        error: {
+          code: resp.status,
+          messag: resp.statusText,
+        },
+      });
+
+      return;
+    }
+
     const data = await resp.json();
 
     setState({
       data,
       isLoading: false,
       hasError: null,
+      error: null,
     });
   };
 

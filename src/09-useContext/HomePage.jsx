@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { UserContext } from "./context/UserContext";
 
+import { MultipleCustomHooks } from "../03-examples/MultipleCustomHooks";
+
 export const HomePage = () => {
   const { user } = useContext(UserContext);
 
@@ -12,6 +14,8 @@ export const HomePage = () => {
       <hr />
 
       <pre>{JSON.stringify(user)}</pre>
+
+      <MultipleCustomHooks />
     </>
   );
 };
