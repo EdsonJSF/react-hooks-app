@@ -1,10 +1,22 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { MultipleCustomHooks } from "../../../src/03-examples/MultipleCustomHooks";
+import { useCounter } from "../../../src/hooks/useCounter";
 import { useFetch } from "../../../src/hooks/useFetch";
 
+jest.mock("../../../src/hooks/useCounter.js");
 jest.mock("../../../src/hooks/useFetch.js");
 
 describe("Test on MultipleCustomHooks", () => {
+  const mockIncrement = jest.fn();
+  useCounter.mockReturnValue({
+    counter: 1,
+    incrementCounter: mockIncrement,
+  });
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test("should show the default component", () => {
     useFetch.mockReturnValue({
       data: null,
@@ -40,5 +52,21 @@ describe("Test on MultipleCustomHooks", () => {
     const nextBtn = screen.getByRole("button", { name: "Next" });
 
     expect(nextBtn.disabled).toBeFalsy();
+  });
+
+  test("should to call increment function", () => {
+    useFetch.mockReturnValue({
+      data: { name: "test", image: "urlimage", origin: { name: "origin" } },
+      isLoading: false,
+      hasError: null,
+    });
+
+    render(<MultipleCustomHooks />);
+
+    const nextBtn = screen.getByRole("button", { name: "Next" });
+
+    fireEvent.click(nextBtn);
+
+    expect(mockIncrement).toHaveBeenCalled();
   });
 });
