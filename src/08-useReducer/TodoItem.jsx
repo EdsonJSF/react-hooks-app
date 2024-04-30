@@ -7,7 +7,7 @@ export const TodoItem = ({ todo, onRemoveTodo, onToggleTodo }) => {
         todo.done ? "bg-success text-white" : ""
       }`}
     >
-      <span onDoubleClick={() => onToggleTodo(todo.id)}>
+      <span onDoubleClick={() => onToggleTodo(todo.id)} aria-label="span">
         {todo.title} - <small>{todo.body}</small>
       </span>
       <button className="btn btn-danger" onClick={() => onRemoveTodo(todo.id)}>
