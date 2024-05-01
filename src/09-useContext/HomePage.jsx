@@ -13,7 +13,7 @@ export const HomePage = () => {
       </h1>
       <hr />
 
-      <pre>{JSON.stringify(user)}</pre>
+      <pre aria-label="pre">{JSON.stringify(user)}</pre>
 
       <MultipleCustomHooks />
     </>
